@@ -1,10 +1,10 @@
-# RBR-Selma-finnish-tts-codriver ![kuva](https://sestomies-gh.github.io/RBR-Selma-suomenkielinen-kartanlukija/web/asset/gb.png)]
+# RBR-Selma-finnish-tts-codriver ![gb](https://sestomies-gh.github.io/RBR-Selma-suomenkielinen-kartanlukija/web/asset/gb.png)
 
 “Selma” – Finnish female co-driver pack for **RallySimFans Richard Burns Rally**, generated using **Microsoft Azure Neural TTS**.
 
 ---
 
-# RBR-Selma-suomenkielinen-kartanlukija <img src="/web/asset/fi.png"></img> 
+# RBR-Selma-suomenkielinen-kartanlukija  ![fi](https://sestomies-gh.github.io/RBR-Selma-suomenkielinen-kartanlukija/web/asset/fi.png)
 
 “Selma” – Suomenkielinen, naisääneen perustuva kartanlukijapaketti **RallySimFans Richard Burns Rally** ‑peliin. Äänet on tuotettu **Microsoft Azure Neural TTS** ‑teknologialla.
 
@@ -44,7 +44,7 @@ Jos jokin menee pieleen tai haluat palauttaa oletuskartturin, pääset aloitusti
 -> Tuloksena tulee alkuperäinen kartturi. Huomaa että Selman-äänitiedostot jäävät vielä tietokoneellesi. Voit halutessasi poistaa ne tuhoamalla pelin hakemistopolun '\Plugins\Pacenote\sounds\  alta  'SELMA' -nimisen kansion...siis tuohoa vain  SELMA -kansio ei muita !!
 
 ---
-## 🎧 Tietoa projektista suomeksi <img src="/web/asset/fi.png"></img>
+## 🎧 Tietoa projektista suomeksi ![fi](https://sestomies-gh.github.io/RBR-Selma-suomenkielinen-kartanlukija/web/asset/fi.png)
 
 Selma on suomenkielinen, naisääneen perustuva kartanlukijan äänipaketti, jonka tavoitteena on tuottaa selkeät ja yhdenmukaiset nuottikutsut RBR:ään.
 
@@ -63,7 +63,7 @@ Pacenote pluginin käyttämien INI-tiedostojen kielisisältö on suomennettu mah
 
 
 
-## 🎧 About the Project <img src="/web/asset/gb.png"></img> 
+## 🎧 About the Project ![gb](https://sestomies-gh.github.io/RBR-Selma-suomenkielinen-kartanlukija/web/asset/gb.png) 
 
 Selma is a Finnish female co‑driver voice designed to give a clear, modern and consistent pacenote experience for Richard Burns Rally.
 
