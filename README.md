@@ -17,7 +17,7 @@ Varmista että sinulla on asennettuna **RallySimFans Richard Burns Rally**-peli.
 
 Ääni- ja tarvittavat Nuotti-tiedostot on pakattu erikseen. Tämä siksi, että äänipaketti tarvitaan vain yhden kerran ja itse NOTE-paketeilla valitaan nuottiskaala ja se mitä ääniä käytetään. Nuottiskaalan muuttamiseen riittää NOTEx-paketin vaihto.
 
-1. Tarkista ensin minkä nuottiskaalan haluat ottaa käyttöön *TÄÄLTÄ*
+1. Tarkista ensin minkä nuottiskaalan haluat ottaa käyttöön *[NUOTTISKAALAT](https://sestomies-gh.github.io/RBR-Selma-suomenkielinen-kartanlukija/web/nuottiskaalat.html)*
 2. Lataa sitä vastaava NOTEx.zip-paketti
 3. Lataa AUDIOS.zip -äänipaketti
 4. Pura molemmat paketit kansioon, johon sinun Richard Burns Rally-peli on asennettu, esimerkiksi:
