@@ -1,0 +1,58 @@
+Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)
+
+This project is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.
+
+You are free to:
+- Share — copy and redistribute the material in any medium or format
+- Adapt — remix, transform, and build upon the material
+
+Under the following terms:
+- Attribution — You must give appropriate credit.
+- NonCommercial — You may not use the material for commercial purposes.
+- ShareAlike — If you remix, transform, or build upon the material, you must distribute your contributions under the same license.
+
+Full license text:
+https://creativecommons.org/licenses/by-nc-sa/4.0/
+(Plain‑language summary: https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)
+
+-----------------------------------------------------------------------
+
+Additional Non‑Commercial Restriction (Project-Specific Clarification)
+
+This project and all distributed audio and assets may not be used in any
+subscription-based, membership-fee-based, paywalled, recurring-payment,
+or otherwise monetized service model. This includes, but is not limited to:
+
+- monthly or annual subscription services,
+- member-only premium platforms,
+- cloud-based paid feature services,
+- Patreon-locked content,
+- commercial mod packs or paid mod repositories.
+
+Such usage is strictly prohibited regardless of context, even if the
+service does not directly profit from this specific material.
+
+This clarification does not modify the CC BY‑NC‑SA 4.0 license itself but
+specifies the author's interpretation of “Non‑Commercial use” for this
+project’s assets.
+
+-----------------------------------------------------------------------
+
+Azure Text-to-Speech (TTS) Notice
+
+Some audio assets in this repository were generated using Microsoft Azure AI Speech (Text-to-Speech) with a paid Standard (S0 / Pay-As-You-Go) resource.
+
+Usage Rights:
+- Audio, which is produced with a paid Azure Speech TTS resource, may be used in published or redistributed works, including commercial scenarios, subject to Microsoft’s Product Terms for Azure Speech services.
+
+This project’s Creative Commons license applies to the content contained in this repository. It does not license or alter Microsoft Azure services themselves. Microsoft is not affiliated with, and does not endorse, this project.
+
+If you redistribute or adapt the audio assets, you must:
+1) comply with this project’s CC BY-NC-SA 4.0 terms (attribution, non-commercial, share-alike), and
+2) ensure your use of Azure-generated audio remains consistent with Microsoft’s service terms applicable at the time of generation.
+
+Attribution example:
+“Includes audio generated with Microsoft Azure AI Speech (S0). Original project: <REPO_NAME or URL>. Licensed under CC BY-NC-SA 4.0.”
+-----------------------------------------------------------------------
+
+© 2026 / Sestomies
