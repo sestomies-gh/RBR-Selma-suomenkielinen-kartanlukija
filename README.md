@@ -3,7 +3,7 @@
 
 ---
 
-# RBR-Selma-finnish-tts-codriver <img src="/web/asset/fi.png"></img> 
+# RBR-Selma-suomenkielinen-kartanlukija <img src="/web/asset/fi.png"></img> 
 
 “Selma” – Suomenkielinen, naisääneen perustuva kartanlukijapaketti **RallySimFans Richard Burns Rally** ‑peliin. Äänet on tuotettu **Microsoft Azure Neural TTS** ‑teknologialla.
 
