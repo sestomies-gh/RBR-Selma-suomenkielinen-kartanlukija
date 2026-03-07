@@ -1,0 +1,1087 @@
+<html><body><div>
+
+<style>
+  .debug-controls {
+    display: none;
+  }
+</style>
+<div style='margin-bottom:10px;'>
+  <label><b>fontti:</b></label>
+  <select id="fontselect" onchange="document.body.style.fontFamily=this.value;">
+    <option value="Verdana">Verdana</option>
+    <option value="Segoe UI">Segoe UI</option>
+    <option value="Arial">Arial</option>
+    <option value="Tahoma">Tahoma</option>
+    <option value="Calibri">Calibri</option>
+    <option value="Roboto">Roboto</option>
+    <option value="Open Sans">Open Sans</option>
+    <option value="Courier New">Courier New</option>
+    <option value="Times New Roman">Times New Roman</option>
+  </select>
+<div class="debug-controls">
+  &nbsp;&nbsp;
+  <label><b>Nuoli 1 väri:</b></label>
+  <input type="color" id="arrow1" value="#000000" onchange="updateArrowColors()">
+
+  <label><b>Nuoli 2 väri:</b></label>
+  <input type="color" id="arrow2" value="#ff8800" onchange="updateArrowColors()">
+
+  &nbsp;&nbsp;
+  <label><b>Tekstin alkuväri:</b></label>
+  <input type="color" id="startcolor" value="#0000ff" onchange="updateTextColors()">
+
+  <label><b>Tekstin loppuväri:</b></label>
+  <input type="color" id="endcolor" value="#ff0000" onchange="updateTextColors()">
+</div>
+
+
+<script>
+function updateArrowColors() {
+  const c1 = document.getElementById("arrow1").value;
+  const c2 = document.getElementById("arrow2").value;
+  const lines = document.querySelectorAll(".arrowline");
+
+  lines.forEach((el, i) => {
+    el.setAttribute("stroke", (i % 2 === 0) ? c1 : c2);
+  });
+}
+
+function updateTextColors() {
+  const start = document.getElementById("startcolor").value;
+  const end = document.getElementById("endcolor").value;
+
+  const rs = parseInt(start.substr(1,2),16);
+  const gs = parseInt(start.substr(3,2),16);
+  const bs = parseInt(start.substr(5,2),16);
+  const re = parseInt(end.substr(1,2),16);
+  const ge = parseInt(end.substr(3,2),16);
+  const be = parseInt(end.substr(5,2),16);
+
+  const svgs = document.querySelectorAll("svg");
+
+  svgs.forEach(svg => {
+    const items = svg.querySelectorAll(".arrowtext");
+
+    items.forEach((el, i) => {
+      const t = i / (items.length - 1);
+      const r = Math.round(rs*(1-t) + re*t);
+      const g = Math.round(gs*(1-t) + ge*t);
+      const b = Math.round(bs*(1-t) + be*t);
+      el.style.fill = `rgb(${r},${g},${b})`;
+    });
+  });
+}
+
+
+window.addEventListener("load", function() {
+  setTimeout(() => {
+    updateArrowColors();
+    updateTextColors();
+  }, 50);
+});
+
+function debugInfo() {
+  const now = new Date().toLocaleTimeString();
+  const items = document.querySelectorAll(".arrowtext");
+  const lines = document.querySelectorAll(".arrowline");
+
+  const dbg = document.getElementById("debugbox");
+  dbg.innerHTML =
+    "JS loaded: " + now +
+    "<br>arrowtext count: " + items.length +
+    "<br>arrowline count: " + lines.length +
+    "<br>start color: " + document.getElementById("startcolor").value +
+    "<br>end color: " + document.getElementById("endcolor").value;
+}
+
+window.addEventListener("load", function() {
+  setTimeout(() => {
+    updateArrowColors();
+    updateTextColors();
+
+  }, 50);
+});
+
+</script>
+
+<h1>NOTE1 (SUUNTA-KUVAAVA)</h1>
+<svg width="700" height="760" viewBox="-0 -175 440 300" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g><rect x="-1000" y="-1000" width="3000" height="3000" fill="#f0f0f0" /><defs>  <marker id="arrowheadBlack" markerWidth="7" markerHeight="7" refX="4" refY="2.5" orient="auto">    <polygon points="0 0, 5 2.5, 0 5" fill="#000000" />  </marker>  <marker id="arrowheadOrange" markerWidth="7" markerHeight="7" refX="4" refY="2.5" orient="auto">    <polygon points="0 0, 5 2.5, 0 5" fill="#ff8800" />  </marker></defs><g>
+  <g transform="rotate(-85)">
+    <line class="arrowline" x1="0" y1="0" x2="230" y2="0" stroke="#000000" stroke-width="3" marker-end="url(#arrowheadBlack)" />
+  </g>
+  <text class="arrowtext" x="21.3" y="-243.1" font-size="14">OIKEE_TAYS</text>
+</g>
+<g>
+  <g transform="rotate(-77)">
+    <line class="arrowline" x1="0" y1="0" x2="215" y2="0" stroke="#ff8800" stroke-width="2" marker-end="url(#arrowheadOrange)" />
+  </g>
+  <text class="arrowtext" x="51.5" y="-223.1" font-size="14">OIKEE_TAYSMIINUS</text>
+</g>
+<g>
+  <g transform="rotate(-70)">
+    <line class="arrowline" x1="0" y1="0" x2="200" y2="0" stroke="#000000" stroke-width="3" marker-end="url(#arrowheadBlack)" />
+  </g>
+  <text class="arrowtext" x="73.2" y="-201.1" font-size="14">OIKEE_HELPPO</text>
+</g>
+<g>
+  <g transform="rotate(-61)">
+    <line class="arrowline" x1="0" y1="0" x2="190" y2="0" stroke="#ff8800" stroke-width="2" marker-end="url(#arrowheadOrange)" />
+  </g>
+  <text class="arrowtext" x="98.9" y="-178.4" font-size="14">OIKEE_LOIVA</text>
+</g>
+<g>
+  <g transform="rotate(-52)">
+    <line class="arrowline" x1="0" y1="0" x2="180" y2="0" stroke="#000000" stroke-width="3" marker-end="url(#arrowheadBlack)" />
+  </g>
+  <text class="arrowtext" x="119.4" y="-152.9" font-size="14">OIKEE_ERI</text>
+</g>
+<g>
+  <g transform="rotate(-44)">
+    <line class="arrowline" x1="0" y1="0" x2="175" y2="0" stroke="#ff8800" stroke-width="2" marker-end="url(#arrowheadOrange)" />
+  </g>
+  <text class="arrowtext" x="136.0" y="-131.3" font-size="14">OIKEE_M</text>
+</g>
+<g>
+  <g transform="rotate(-36)">
+    <line class="arrowline" x1="0" y1="0" x2="170" y2="0" stroke="#000000" stroke-width="3" marker-end="url(#arrowheadBlack)" />
+  </g>
+  <text class="arrowtext" x="148.9" y="-108.2" font-size="14">OIKEE_NOPEE</text>
+</g>
+<g>
+  <g transform="rotate(-27)">
+    <line class="arrowline" x1="0" y1="0" x2="165" y2="0" stroke="#ff8800" stroke-width="2" marker-end="url(#arrowheadOrange)" />
+  </g>
+  <text class="arrowtext" x="159.5" y="-81.3" font-size="14">OIKEE_PLUS</text>
+</g>
+<g>
+  <g transform="rotate(-18)">
+    <line class="arrowline" x1="0" y1="0" x2="165" y2="0" stroke="#000000" stroke-width="3" marker-end="url(#arrowheadBlack)" />
+  </g>
+  <text class="arrowtext" x="170.2" y="-55.3" font-size="14">OIKEE_K</text>
+</g>
+<g>
+  <g transform="rotate(-10)">
+    <line class="arrowline" x1="0" y1="0" x2="155" y2="0" stroke="#ff8800" stroke-width="2" marker-end="url(#arrowheadOrange)" />
+  </g>
+  <text class="arrowtext" x="166.4" y="-29.3" font-size="14">OIKEE_TIUKKA</text>
+</g>
+<g>
+  <g transform="rotate(0)">
+    <line class="arrowline" x1="0" y1="0" x2="155" y2="0" stroke="#000000" stroke-width="3" marker-end="url(#arrowheadBlack)" />
+  </g>
+  <text class="arrowtext" x="169.0" y="0.0" font-size="14">OIKEE_JYRKKA</text>
+</g>
+<g>
+  <g transform="rotate(10)">
+    <line class="arrowline" x1="0" y1="0" x2="160" y2="0" stroke="#ff8800" stroke-width="2" marker-end="url(#arrowheadOrange)" />
+  </g>
+  <text class="arrowtext" x="171.4" y="30.2" font-size="14">OIKEE_MIINUS</text>
+</g>
+<g>
+  <g transform="rotate(22)">
+    <line class="arrowline" x1="0" y1="0" x2="170" y2="0" stroke="#000000" stroke-width="3" marker-end="url(#arrowheadBlack)" />
+  </g>
+  <text class="arrowtext" x="170.6" y="68.9" font-size="14">OIKEE_HIDAS</text>
+</g>
+<g>
+  <g transform="rotate(38)">
+    <line class="arrowline" x1="0" y1="0" x2="180" y2="0" stroke="#ff8800" stroke-width="2" marker-end="url(#arrowheadOrange)" />
+  </g>
+  <text class="arrowtext" x="152.9" y="119.4" font-size="14">OIKEE_PYOREE_SERPO</text>
+</g>
+<g>
+  <g transform="rotate(55)">
+    <line class="arrowline" x1="0" y1="0" x2="190" y2="0" stroke="#000000" stroke-width="3" marker-end="url(#arrowheadBlack)" />
+  </g>
+  <text class="arrowtext" x="117.0" y="167.1" font-size="14">OIKEE_SERPO</text>
+</g>
+<g>
+  <g transform="rotate(75)">
+    <line class="arrowline" x1="0" y1="0" x2="200" y2="0" stroke="#ff8800" stroke-width="2" marker-end="url(#arrowheadOrange)" />
+  </g>
+  <text class="arrowtext" x="55.4" y="206.7" font-size="14">OIKEE_TAKA</text>
+</g></g></svg>
+<hr>
+<h1>NOTE2 (KUVAAVA-SUUNTA)</h1>
+<svg width="700" height="760" viewBox="-0 -175 440 300" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g><rect x="-1000" y="-1000" width="3000" height="3000" fill="#f0f0f0" /><defs>  <marker id="arrowheadBlack" markerWidth="7" markerHeight="7" refX="4" refY="2.5" orient="auto">    <polygon points="0 0, 5 2.5, 0 5" fill="#000000" />  </marker>  <marker id="arrowheadOrange" markerWidth="7" markerHeight="7" refX="4" refY="2.5" orient="auto">    <polygon points="0 0, 5 2.5, 0 5" fill="#ff8800" />  </marker></defs><g>
+  <g transform="rotate(-85)">
+    <line class="arrowline" x1="0" y1="0" x2="230" y2="0" stroke="#000000" stroke-width="3" marker-end="url(#arrowheadBlack)" />
+  </g>
+  <text class="arrowtext" x="21.3" y="-243.1" font-size="14">TAYS_OIKEE</text>
+</g>
+<g>
+  <g transform="rotate(-77)">
+    <line class="arrowline" x1="0" y1="0" x2="215" y2="0" stroke="#ff8800" stroke-width="2" marker-end="url(#arrowheadOrange)" />
+  </g>
+  <text class="arrowtext" x="51.5" y="-223.1" font-size="14">TAYSMIINUS_OIKEE</text>
+</g>
+<g>
+  <g transform="rotate(-70)">
+    <line class="arrowline" x1="0" y1="0" x2="200" y2="0" stroke="#000000" stroke-width="3" marker-end="url(#arrowheadBlack)" />
+  </g>
+  <text class="arrowtext" x="73.2" y="-201.1" font-size="14">HELPPO_OIKEE</text>
+</g>
+<g>
+  <g transform="rotate(-61)">
+    <line class="arrowline" x1="0" y1="0" x2="190" y2="0" stroke="#ff8800" stroke-width="2" marker-end="url(#arrowheadOrange)" />
+  </g>
+  <text class="arrowtext" x="98.9" y="-178.4" font-size="14">LOIVA_OIKEE</text>
+</g>
+<g>
+  <g transform="rotate(-52)">
+    <line class="arrowline" x1="0" y1="0" x2="180" y2="0" stroke="#000000" stroke-width="3" marker-end="url(#arrowheadBlack)" />
+  </g>
+  <text class="arrowtext" x="119.4" y="-152.9" font-size="14">ERI_OIKEE</text>
+</g>
+<g>
+  <g transform="rotate(-44)">
+    <line class="arrowline" x1="0" y1="0" x2="175" y2="0" stroke="#ff8800" stroke-width="2" marker-end="url(#arrowheadOrange)" />
+  </g>
+  <text class="arrowtext" x="136.0" y="-131.3" font-size="14">M_OIKEE</text>
+</g>
+<g>
+  <g transform="rotate(-36)">
+    <line class="arrowline" x1="0" y1="0" x2="170" y2="0" stroke="#000000" stroke-width="3" marker-end="url(#arrowheadBlack)" />
+  </g>
+  <text class="arrowtext" x="148.9" y="-108.2" font-size="14">NOPEE_OIKEE</text>
+</g>
+<g>
+  <g transform="rotate(-27)">
+    <line class="arrowline" x1="0" y1="0" x2="165" y2="0" stroke="#ff8800" stroke-width="2" marker-end="url(#arrowheadOrange)" />
+  </g>
+  <text class="arrowtext" x="159.5" y="-81.3" font-size="14">PLUS_OIKEE</text>
+</g>
+<g>
+  <g transform="rotate(-18)">
+    <line class="arrowline" x1="0" y1="0" x2="165" y2="0" stroke="#000000" stroke-width="3" marker-end="url(#arrowheadBlack)" />
+  </g>
+  <text class="arrowtext" x="170.2" y="-55.3" font-size="14">K_OIKEE</text>
+</g>
+<g>
+  <g transform="rotate(-10)">
+    <line class="arrowline" x1="0" y1="0" x2="155" y2="0" stroke="#ff8800" stroke-width="2" marker-end="url(#arrowheadOrange)" />
+  </g>
+  <text class="arrowtext" x="166.4" y="-29.3" font-size="14">TIUKKA_OIKEE</text>
+</g>
+<g>
+  <g transform="rotate(0)">
+    <line class="arrowline" x1="0" y1="0" x2="155" y2="0" stroke="#000000" stroke-width="3" marker-end="url(#arrowheadBlack)" />
+  </g>
+  <text class="arrowtext" x="169.0" y="0.0" font-size="14">JYRKKA_OIKEE</text>
+</g>
+<g>
+  <g transform="rotate(10)">
+    <line class="arrowline" x1="0" y1="0" x2="160" y2="0" stroke="#ff8800" stroke-width="2" marker-end="url(#arrowheadOrange)" />
+  </g>
+  <text class="arrowtext" x="171.4" y="30.2" font-size="14">MIINUS_OIKEE</text>
+</g>
+<g>
+  <g transform="rotate(22)">
+    <line class="arrowline" x1="0" y1="0" x2="170" y2="0" stroke="#000000" stroke-width="3" marker-end="url(#arrowheadBlack)" />
+  </g>
+  <text class="arrowtext" x="170.6" y="68.9" font-size="14">HIDAS_OIKEE</text>
+</g>
+<g>
+  <g transform="rotate(38)">
+    <line class="arrowline" x1="0" y1="0" x2="180" y2="0" stroke="#ff8800" stroke-width="2" marker-end="url(#arrowheadOrange)" />
+  </g>
+  <text class="arrowtext" x="152.9" y="119.4" font-size="14">PYOREE_SERPO_OIKEE</text>
+</g>
+<g>
+  <g transform="rotate(55)">
+    <line class="arrowline" x1="0" y1="0" x2="190" y2="0" stroke="#000000" stroke-width="3" marker-end="url(#arrowheadBlack)" />
+  </g>
+  <text class="arrowtext" x="117.0" y="167.1" font-size="14">SERPO_OIKEE</text>
+</g>
+<g>
+  <g transform="rotate(75)">
+    <line class="arrowline" x1="0" y1="0" x2="200" y2="0" stroke="#ff8800" stroke-width="2" marker-end="url(#arrowheadOrange)" />
+  </g>
+  <text class="arrowtext" x="55.4" y="206.7" font-size="14">TAKA_OIKEE</text>
+</g></g></svg>
+<hr>
+<h1>NOTE3 (SUUNTA-KUVAAVA2)</h1>
+<svg width="700" height="760" viewBox="-0 -175 440 300" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g><rect x="-1000" y="-1000" width="3000" height="3000" fill="#f0f0f0" /><defs>  <marker id="arrowheadBlack" markerWidth="7" markerHeight="7" refX="4" refY="2.5" orient="auto">    <polygon points="0 0, 5 2.5, 0 5" fill="#000000" />  </marker>  <marker id="arrowheadOrange" markerWidth="7" markerHeight="7" refX="4" refY="2.5" orient="auto">    <polygon points="0 0, 5 2.5, 0 5" fill="#ff8800" />  </marker></defs><g>
+  <g transform="rotate(-85)">
+    <line class="arrowline" x1="0" y1="0" x2="230" y2="0" stroke="#000000" stroke-width="3" marker-end="url(#arrowheadBlack)" />
+  </g>
+  <text class="arrowtext" x="21.3" y="-243.1" font-size="14">OIKEE_TAYS</text>
+</g>
+<g>
+  <g transform="rotate(-77)">
+    <line class="arrowline" x1="0" y1="0" x2="215" y2="0" stroke="#ff8800" stroke-width="2" marker-end="url(#arrowheadOrange)" />
+  </g>
+  <text class="arrowtext" x="51.5" y="-223.1" font-size="14">OIKEE_TAYSMIINUS</text>
+</g>
+<g>
+  <g transform="rotate(-70)">
+    <line class="arrowline" x1="0" y1="0" x2="200" y2="0" stroke="#000000" stroke-width="3" marker-end="url(#arrowheadBlack)" />
+  </g>
+  <text class="arrowtext" x="73.2" y="-201.1" font-size="14">OIKEE_HELPPO</text>
+</g>
+<g>
+  <g transform="rotate(-61)">
+    <line class="arrowline" x1="0" y1="0" x2="190" y2="0" stroke="#ff8800" stroke-width="2" marker-end="url(#arrowheadOrange)" />
+  </g>
+  <text class="arrowtext" x="98.9" y="-178.4" font-size="14">OIKEE_LOIVA</text>
+</g>
+<g>
+  <g transform="rotate(-52)">
+    <line class="arrowline" x1="0" y1="0" x2="180" y2="0" stroke="#000000" stroke-width="3" marker-end="url(#arrowheadBlack)" />
+  </g>
+  <text class="arrowtext" x="119.4" y="-152.9" font-size="14">OIKEE_ERI</text>
+</g>
+<g>
+  <g transform="rotate(-44)">
+    <line class="arrowline" x1="0" y1="0" x2="175" y2="0" stroke="#ff8800" stroke-width="2" marker-end="url(#arrowheadOrange)" />
+  </g>
+  <text class="arrowtext" x="136.0" y="-131.3" font-size="14">OIKEE_SEMI</text>
+</g>
+<g>
+  <g transform="rotate(-36)">
+    <line class="arrowline" x1="0" y1="0" x2="170" y2="0" stroke="#000000" stroke-width="3" marker-end="url(#arrowheadBlack)" />
+  </g>
+  <text class="arrowtext" x="148.9" y="-108.2" font-size="14">OIKEE_NOPEE</text>
+</g>
+<g>
+  <g transform="rotate(-27)">
+    <line class="arrowline" x1="0" y1="0" x2="165" y2="0" stroke="#ff8800" stroke-width="2" marker-end="url(#arrowheadOrange)" />
+  </g>
+  <text class="arrowtext" x="159.5" y="-81.3" font-size="14">OIKEE_PLUS</text>
+</g>
+<g>
+  <g transform="rotate(-18)">
+    <line class="arrowline" x1="0" y1="0" x2="165" y2="0" stroke="#000000" stroke-width="3" marker-end="url(#arrowheadBlack)" />
+  </g>
+  <text class="arrowtext" x="170.2" y="-55.3" font-size="14">OIKEE_K</text>
+</g>
+<g>
+  <g transform="rotate(-10)">
+    <line class="arrowline" x1="0" y1="0" x2="155" y2="0" stroke="#ff8800" stroke-width="2" marker-end="url(#arrowheadOrange)" />
+  </g>
+  <text class="arrowtext" x="166.4" y="-29.3" font-size="14">OIKEE_TIUKKA</text>
+</g>
+<g>
+  <g transform="rotate(0)">
+    <line class="arrowline" x1="0" y1="0" x2="155" y2="0" stroke="#000000" stroke-width="3" marker-end="url(#arrowheadBlack)" />
+  </g>
+  <text class="arrowtext" x="169.0" y="0.0" font-size="14">OIKEE_90</text>
+</g>
+<g>
+  <g transform="rotate(10)">
+    <line class="arrowline" x1="0" y1="0" x2="160" y2="0" stroke="#ff8800" stroke-width="2" marker-end="url(#arrowheadOrange)" />
+  </g>
+  <text class="arrowtext" x="171.4" y="30.2" font-size="14">OIKEE_MIINUS</text>
+</g>
+<g>
+  <g transform="rotate(22)">
+    <line class="arrowline" x1="0" y1="0" x2="170" y2="0" stroke="#000000" stroke-width="3" marker-end="url(#arrowheadBlack)" />
+  </g>
+  <text class="arrowtext" x="170.6" y="68.9" font-size="14">OIKEE_HIDAS</text>
+</g>
+<g>
+  <g transform="rotate(38)">
+    <line class="arrowline" x1="0" y1="0" x2="180" y2="0" stroke="#ff8800" stroke-width="2" marker-end="url(#arrowheadOrange)" />
+  </g>
+  <text class="arrowtext" x="152.9" y="119.4" font-size="14">OIKEE_SERPO</text>
+</g>
+<g>
+  <g transform="rotate(55)">
+    <line class="arrowline" x1="0" y1="0" x2="190" y2="0" stroke="#000000" stroke-width="3" marker-end="url(#arrowheadBlack)" />
+  </g>
+  <text class="arrowtext" x="117.0" y="167.1" font-size="14">OIKEE_PAHA</text>
+</g>
+<g>
+  <g transform="rotate(75)">
+    <line class="arrowline" x1="0" y1="0" x2="200" y2="0" stroke="#ff8800" stroke-width="2" marker-end="url(#arrowheadOrange)" />
+  </g>
+  <text class="arrowtext" x="55.4" y="206.7" font-size="14">OIKEE_TAKA</text>
+</g></g></svg>
+<hr>
+<h1>NOTE4 (SUUNTA-TÄYS_NUM_SERPO_TIUKKASERPO)</h1>
+<svg width="700" height="760" viewBox="-0 -175 440 300" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g><rect x="-1000" y="-1000" width="3000" height="3000" fill="#f0f0f0" /><defs>  <marker id="arrowheadBlack" markerWidth="7" markerHeight="7" refX="4" refY="2.5" orient="auto">    <polygon points="0 0, 5 2.5, 0 5" fill="#000000" />  </marker>  <marker id="arrowheadOrange" markerWidth="7" markerHeight="7" refX="4" refY="2.5" orient="auto">    <polygon points="0 0, 5 2.5, 0 5" fill="#ff8800" />  </marker></defs><g>
+  <g transform="rotate(-85)">
+    <line class="arrowline" x1="0" y1="0" x2="230" y2="0" stroke="#000000" stroke-width="3" marker-end="url(#arrowheadBlack)" />
+  </g>
+  <text class="arrowtext" x="21.3" y="-243.1" font-size="14">OIKEE_TAYS</text>
+</g>
+<g>
+  <g transform="rotate(-77)">
+    <line class="arrowline" x1="0" y1="0" x2="215" y2="0" stroke="#ff8800" stroke-width="2" marker-end="url(#arrowheadOrange)" />
+  </g>
+  <text class="arrowtext" x="51.5" y="-223.1" font-size="14">OIKEE_6_PLUS</text>
+</g>
+<g>
+  <g transform="rotate(-70)">
+    <line class="arrowline" x1="0" y1="0" x2="200" y2="0" stroke="#000000" stroke-width="3" marker-end="url(#arrowheadBlack)" />
+  </g>
+  <text class="arrowtext" x="73.2" y="-201.1" font-size="14">OIKEE_6</text>
+</g>
+<g>
+  <g transform="rotate(-61)">
+    <line class="arrowline" x1="0" y1="0" x2="190" y2="0" stroke="#ff8800" stroke-width="2" marker-end="url(#arrowheadOrange)" />
+  </g>
+  <text class="arrowtext" x="98.9" y="-178.4" font-size="14">OIKEE_5_PLUS</text>
+</g>
+<g>
+  <g transform="rotate(-52)">
+    <line class="arrowline" x1="0" y1="0" x2="180" y2="0" stroke="#000000" stroke-width="3" marker-end="url(#arrowheadBlack)" />
+  </g>
+  <text class="arrowtext" x="119.4" y="-152.9" font-size="14">OIKEE_5</text>
+</g>
+<g>
+  <g transform="rotate(-44)">
+    <line class="arrowline" x1="0" y1="0" x2="175" y2="0" stroke="#ff8800" stroke-width="2" marker-end="url(#arrowheadOrange)" />
+  </g>
+  <text class="arrowtext" x="136.0" y="-131.3" font-size="14">OIKEE_4_PLUS</text>
+</g>
+<g>
+  <g transform="rotate(-36)">
+    <line class="arrowline" x1="0" y1="0" x2="170" y2="0" stroke="#000000" stroke-width="3" marker-end="url(#arrowheadBlack)" />
+  </g>
+  <text class="arrowtext" x="148.9" y="-108.2" font-size="14">OIKEE_4</text>
+</g>
+<g>
+  <g transform="rotate(-27)">
+    <line class="arrowline" x1="0" y1="0" x2="165" y2="0" stroke="#ff8800" stroke-width="2" marker-end="url(#arrowheadOrange)" />
+  </g>
+  <text class="arrowtext" x="159.5" y="-81.3" font-size="14">OIKEE_3_PLUS</text>
+</g>
+<g>
+  <g transform="rotate(-18)">
+    <line class="arrowline" x1="0" y1="0" x2="165" y2="0" stroke="#000000" stroke-width="3" marker-end="url(#arrowheadBlack)" />
+  </g>
+  <text class="arrowtext" x="170.2" y="-55.3" font-size="14">OIKEE_3</text>
+</g>
+<g>
+  <g transform="rotate(-10)">
+    <line class="arrowline" x1="0" y1="0" x2="155" y2="0" stroke="#ff8800" stroke-width="2" marker-end="url(#arrowheadOrange)" />
+  </g>
+  <text class="arrowtext" x="166.4" y="-29.3" font-size="14">OIKEE_90_PLUS</text>
+</g>
+<g>
+  <g transform="rotate(0)">
+    <line class="arrowline" x1="0" y1="0" x2="155" y2="0" stroke="#000000" stroke-width="3" marker-end="url(#arrowheadBlack)" />
+  </g>
+  <text class="arrowtext" x="169.0" y="0.0" font-size="14">OIKEE_90</text>
+</g>
+<g>
+  <g transform="rotate(10)">
+    <line class="arrowline" x1="0" y1="0" x2="160" y2="0" stroke="#ff8800" stroke-width="2" marker-end="url(#arrowheadOrange)" />
+  </g>
+  <text class="arrowtext" x="171.4" y="30.2" font-size="14">OIKEE_2_PLUS</text>
+</g>
+<g>
+  <g transform="rotate(22)">
+    <line class="arrowline" x1="0" y1="0" x2="170" y2="0" stroke="#000000" stroke-width="3" marker-end="url(#arrowheadBlack)" />
+  </g>
+  <text class="arrowtext" x="170.6" y="68.9" font-size="14">OIKEE_2</text>
+</g>
+<g>
+  <g transform="rotate(38)">
+    <line class="arrowline" x1="0" y1="0" x2="180" y2="0" stroke="#ff8800" stroke-width="2" marker-end="url(#arrowheadOrange)" />
+  </g>
+  <text class="arrowtext" x="152.9" y="119.4" font-size="14">OIKEE_1</text>
+</g>
+<g>
+  <g transform="rotate(55)">
+    <line class="arrowline" x1="0" y1="0" x2="190" y2="0" stroke="#000000" stroke-width="3" marker-end="url(#arrowheadBlack)" />
+  </g>
+  <text class="arrowtext" x="117.0" y="167.1" font-size="14">OIKEE_SERPO</text>
+</g>
+<g>
+  <g transform="rotate(75)">
+    <line class="arrowline" x1="0" y1="0" x2="200" y2="0" stroke="#ff8800" stroke-width="2" marker-end="url(#arrowheadOrange)" />
+  </g>
+  <text class="arrowtext" x="55.4" y="206.7" font-size="14">OIKEE_TIUKKA_SERPO</text>
+</g></g></svg>
+<hr>
+<h1>NOTE5 (TÄYS_NUM_SERPO-SUUNTA)</h1>
+<svg width="700" height="760" viewBox="-0 -175 440 300" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g><rect x="-1000" y="-1000" width="3000" height="3000" fill="#f0f0f0" /><defs>  <marker id="arrowheadBlack" markerWidth="7" markerHeight="7" refX="4" refY="2.5" orient="auto">    <polygon points="0 0, 5 2.5, 0 5" fill="#000000" />  </marker>  <marker id="arrowheadOrange" markerWidth="7" markerHeight="7" refX="4" refY="2.5" orient="auto">    <polygon points="0 0, 5 2.5, 0 5" fill="#ff8800" />  </marker></defs><g>
+  <g transform="rotate(-85)">
+    <line class="arrowline" x1="0" y1="0" x2="230" y2="0" stroke="#000000" stroke-width="3" marker-end="url(#arrowheadBlack)" />
+  </g>
+  <text class="arrowtext" x="21.3" y="-243.1" font-size="14">TAYS_OIKEE</text>
+</g>
+<g>
+  <g transform="rotate(-77)">
+    <line class="arrowline" x1="0" y1="0" x2="215" y2="0" stroke="#ff8800" stroke-width="2" marker-end="url(#arrowheadOrange)" />
+  </g>
+  <text class="arrowtext" x="51.5" y="-223.1" font-size="14">6_PLUS_OIKEE</text>
+</g>
+<g>
+  <g transform="rotate(-70)">
+    <line class="arrowline" x1="0" y1="0" x2="200" y2="0" stroke="#000000" stroke-width="3" marker-end="url(#arrowheadBlack)" />
+  </g>
+  <text class="arrowtext" x="73.2" y="-201.1" font-size="14">6_OIKEE</text>
+</g>
+<g>
+  <g transform="rotate(-61)">
+    <line class="arrowline" x1="0" y1="0" x2="190" y2="0" stroke="#ff8800" stroke-width="2" marker-end="url(#arrowheadOrange)" />
+  </g>
+  <text class="arrowtext" x="98.9" y="-178.4" font-size="14">5_PLUS_OIKEE</text>
+</g>
+<g>
+  <g transform="rotate(-52)">
+    <line class="arrowline" x1="0" y1="0" x2="180" y2="0" stroke="#000000" stroke-width="3" marker-end="url(#arrowheadBlack)" />
+  </g>
+  <text class="arrowtext" x="119.4" y="-152.9" font-size="14">5_OIKEE</text>
+</g>
+<g>
+  <g transform="rotate(-44)">
+    <line class="arrowline" x1="0" y1="0" x2="175" y2="0" stroke="#ff8800" stroke-width="2" marker-end="url(#arrowheadOrange)" />
+  </g>
+  <text class="arrowtext" x="136.0" y="-131.3" font-size="14">4_PLUS_OIKEE</text>
+</g>
+<g>
+  <g transform="rotate(-36)">
+    <line class="arrowline" x1="0" y1="0" x2="170" y2="0" stroke="#000000" stroke-width="3" marker-end="url(#arrowheadBlack)" />
+  </g>
+  <text class="arrowtext" x="148.9" y="-108.2" font-size="14">4_OIKEE</text>
+</g>
+<g>
+  <g transform="rotate(-27)">
+    <line class="arrowline" x1="0" y1="0" x2="165" y2="0" stroke="#ff8800" stroke-width="2" marker-end="url(#arrowheadOrange)" />
+  </g>
+  <text class="arrowtext" x="159.5" y="-81.3" font-size="14">3_PLUS_OIKEE</text>
+</g>
+<g>
+  <g transform="rotate(-18)">
+    <line class="arrowline" x1="0" y1="0" x2="165" y2="0" stroke="#000000" stroke-width="3" marker-end="url(#arrowheadBlack)" />
+  </g>
+  <text class="arrowtext" x="170.2" y="-55.3" font-size="14">3_OIKEE</text>
+</g>
+<g>
+  <g transform="rotate(-10)">
+    <line class="arrowline" x1="0" y1="0" x2="155" y2="0" stroke="#ff8800" stroke-width="2" marker-end="url(#arrowheadOrange)" />
+  </g>
+  <text class="arrowtext" x="166.4" y="-29.3" font-size="14">90_PLUS_OIKEE</text>
+</g>
+<g>
+  <g transform="rotate(0)">
+    <line class="arrowline" x1="0" y1="0" x2="155" y2="0" stroke="#000000" stroke-width="3" marker-end="url(#arrowheadBlack)" />
+  </g>
+  <text class="arrowtext" x="169.0" y="0.0" font-size="14">90_OIKEE</text>
+</g>
+<g>
+  <g transform="rotate(10)">
+    <line class="arrowline" x1="0" y1="0" x2="160" y2="0" stroke="#ff8800" stroke-width="2" marker-end="url(#arrowheadOrange)" />
+  </g>
+  <text class="arrowtext" x="171.4" y="30.2" font-size="14">2_PLUS_OIKEE</text>
+</g>
+<g>
+  <g transform="rotate(22)">
+    <line class="arrowline" x1="0" y1="0" x2="170" y2="0" stroke="#000000" stroke-width="3" marker-end="url(#arrowheadBlack)" />
+  </g>
+  <text class="arrowtext" x="170.6" y="68.9" font-size="14">2_OIKEE</text>
+</g>
+<g>
+  <g transform="rotate(38)">
+    <line class="arrowline" x1="0" y1="0" x2="180" y2="0" stroke="#ff8800" stroke-width="2" marker-end="url(#arrowheadOrange)" />
+  </g>
+  <text class="arrowtext" x="152.9" y="119.4" font-size="14">1_PLUS_OIKEE</text>
+</g>
+<g>
+  <g transform="rotate(55)">
+    <line class="arrowline" x1="0" y1="0" x2="190" y2="0" stroke="#000000" stroke-width="3" marker-end="url(#arrowheadBlack)" />
+  </g>
+  <text class="arrowtext" x="117.0" y="167.1" font-size="14">SERPO_OIKEE</text>
+</g>
+<g>
+  <g transform="rotate(75)">
+    <line class="arrowline" x1="0" y1="0" x2="200" y2="0" stroke="#ff8800" stroke-width="2" marker-end="url(#arrowheadOrange)" />
+  </g>
+  <text class="arrowtext" x="55.4" y="206.7" font-size="14">1_OIKEE</text>
+</g></g></svg>
+<hr>
+<h1>NOTE6 (SIMPLE_KUVAAVA-SUUNTA)</h1>
+<svg width="700" height="760" viewBox="-0 -175 440 300" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g><rect x="-1000" y="-1000" width="3000" height="3000" fill="#f0f0f0" /><defs>  <marker id="arrowheadBlack" markerWidth="7" markerHeight="7" refX="4" refY="2.5" orient="auto">    <polygon points="0 0, 5 2.5, 0 5" fill="#000000" />  </marker>  <marker id="arrowheadOrange" markerWidth="7" markerHeight="7" refX="4" refY="2.5" orient="auto">    <polygon points="0 0, 5 2.5, 0 5" fill="#ff8800" />  </marker></defs><g>
+  <g transform="rotate(-85)">
+    <line class="arrowline" x1="0" y1="0" x2="230" y2="0" stroke="#000000" stroke-width="3" marker-end="url(#arrowheadBlack)" />
+  </g>
+  <text class="arrowtext" x="21.3" y="-243.1" font-size="14">TAYS_OIKEE</text>
+</g>
+<g>
+  <g transform="rotate(-77)">
+    <line class="arrowline" x1="0" y1="0" x2="215" y2="0" stroke="#ff8800" stroke-width="2" marker-end="url(#arrowheadOrange)" />
+  </g>
+  <text class="arrowtext" x="51.5" y="-223.1" font-size="14">TAYS_OIKEE</text>
+</g>
+<g>
+  <g transform="rotate(-70)">
+    <line class="arrowline" x1="0" y1="0" x2="200" y2="0" stroke="#000000" stroke-width="3" marker-end="url(#arrowheadBlack)" />
+  </g>
+  <text class="arrowtext" x="73.2" y="-201.1" font-size="14">HELPPO_OIKEE</text>
+</g>
+<g>
+  <g transform="rotate(-61)">
+    <line class="arrowline" x1="0" y1="0" x2="190" y2="0" stroke="#ff8800" stroke-width="2" marker-end="url(#arrowheadOrange)" />
+  </g>
+  <text class="arrowtext" x="98.9" y="-178.4" font-size="14">HELPPO_OIKEE</text>
+</g>
+<g>
+  <g transform="rotate(-52)">
+    <line class="arrowline" x1="0" y1="0" x2="180" y2="0" stroke="#000000" stroke-width="3" marker-end="url(#arrowheadBlack)" />
+  </g>
+  <text class="arrowtext" x="119.4" y="-152.9" font-size="14">ERI_OIKEE</text>
+</g>
+<g>
+  <g transform="rotate(-44)">
+    <line class="arrowline" x1="0" y1="0" x2="175" y2="0" stroke="#ff8800" stroke-width="2" marker-end="url(#arrowheadOrange)" />
+  </g>
+  <text class="arrowtext" x="136.0" y="-131.3" font-size="14">ERI_OIKEE</text>
+</g>
+<g>
+  <g transform="rotate(-36)">
+    <line class="arrowline" x1="0" y1="0" x2="170" y2="0" stroke="#000000" stroke-width="3" marker-end="url(#arrowheadBlack)" />
+  </g>
+  <text class="arrowtext" x="148.9" y="-108.2" font-size="14">NOPEE_OIKEE</text>
+</g>
+<g>
+  <g transform="rotate(-27)">
+    <line class="arrowline" x1="0" y1="0" x2="165" y2="0" stroke="#ff8800" stroke-width="2" marker-end="url(#arrowheadOrange)" />
+  </g>
+  <text class="arrowtext" x="159.5" y="-81.3" font-size="14">NOPEE_OIKEE</text>
+</g>
+<g>
+  <g transform="rotate(-18)">
+    <line class="arrowline" x1="0" y1="0" x2="165" y2="0" stroke="#000000" stroke-width="3" marker-end="url(#arrowheadBlack)" />
+  </g>
+  <text class="arrowtext" x="170.2" y="-55.3" font-size="14">K_OIKEE</text>
+</g>
+<g>
+  <g transform="rotate(-10)">
+    <line class="arrowline" x1="0" y1="0" x2="155" y2="0" stroke="#ff8800" stroke-width="2" marker-end="url(#arrowheadOrange)" />
+  </g>
+  <text class="arrowtext" x="166.4" y="-29.3" font-size="14">K_OIKEE</text>
+</g>
+<g>
+  <g transform="rotate(0)">
+    <line class="arrowline" x1="0" y1="0" x2="155" y2="0" stroke="#000000" stroke-width="3" marker-end="url(#arrowheadBlack)" />
+  </g>
+  <text class="arrowtext" x="169.0" y="0.0" font-size="14">90_OIKEE</text>
+</g>
+<g>
+  <g transform="rotate(10)">
+    <line class="arrowline" x1="0" y1="0" x2="160" y2="0" stroke="#ff8800" stroke-width="2" marker-end="url(#arrowheadOrange)" />
+  </g>
+  <text class="arrowtext" x="171.4" y="30.2" font-size="14">90_OIKEE</text>
+</g>
+<g>
+  <g transform="rotate(22)">
+    <line class="arrowline" x1="0" y1="0" x2="170" y2="0" stroke="#000000" stroke-width="3" marker-end="url(#arrowheadBlack)" />
+  </g>
+  <text class="arrowtext" x="170.6" y="68.9" font-size="14">HIDAS_OIKEE</text>
+</g>
+<g>
+  <g transform="rotate(38)">
+    <line class="arrowline" x1="0" y1="0" x2="180" y2="0" stroke="#ff8800" stroke-width="2" marker-end="url(#arrowheadOrange)" />
+  </g>
+  <text class="arrowtext" x="152.9" y="119.4" font-size="14">HIDAS_OIKEE</text>
+</g>
+<g>
+  <g transform="rotate(55)">
+    <line class="arrowline" x1="0" y1="0" x2="190" y2="0" stroke="#000000" stroke-width="3" marker-end="url(#arrowheadBlack)" />
+  </g>
+  <text class="arrowtext" x="117.0" y="167.1" font-size="14">SERPO_OIKEE</text>
+</g>
+<g>
+  <g transform="rotate(75)">
+    <line class="arrowline" x1="0" y1="0" x2="200" y2="0" stroke="#ff8800" stroke-width="2" marker-end="url(#arrowheadOrange)" />
+  </g>
+  <text class="arrowtext" x="55.4" y="206.7" font-size="14">TAKA_OIKEE</text>
+</g></g></svg>
+<hr>
+<h1>NOTE7 (SIMPLE_SUUNTA-KUVAAVA)</h1>
+<svg width="700" height="760" viewBox="-0 -175 440 300" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g><rect x="-1000" y="-1000" width="3000" height="3000" fill="#f0f0f0" /><defs>  <marker id="arrowheadBlack" markerWidth="7" markerHeight="7" refX="4" refY="2.5" orient="auto">    <polygon points="0 0, 5 2.5, 0 5" fill="#000000" />  </marker>  <marker id="arrowheadOrange" markerWidth="7" markerHeight="7" refX="4" refY="2.5" orient="auto">    <polygon points="0 0, 5 2.5, 0 5" fill="#ff8800" />  </marker></defs><g>
+  <g transform="rotate(-85)">
+    <line class="arrowline" x1="0" y1="0" x2="230" y2="0" stroke="#000000" stroke-width="3" marker-end="url(#arrowheadBlack)" />
+  </g>
+  <text class="arrowtext" x="21.3" y="-243.1" font-size="14">OIKEE_TAYS</text>
+</g>
+<g>
+  <g transform="rotate(-77)">
+    <line class="arrowline" x1="0" y1="0" x2="215" y2="0" stroke="#ff8800" stroke-width="2" marker-end="url(#arrowheadOrange)" />
+  </g>
+  <text class="arrowtext" x="51.5" y="-223.1" font-size="14">OIKEE_TAYS</text>
+</g>
+<g>
+  <g transform="rotate(-70)">
+    <line class="arrowline" x1="0" y1="0" x2="200" y2="0" stroke="#000000" stroke-width="3" marker-end="url(#arrowheadBlack)" />
+  </g>
+  <text class="arrowtext" x="73.2" y="-201.1" font-size="14">OIKEE_HELPPO</text>
+</g>
+<g>
+  <g transform="rotate(-61)">
+    <line class="arrowline" x1="0" y1="0" x2="190" y2="0" stroke="#ff8800" stroke-width="2" marker-end="url(#arrowheadOrange)" />
+  </g>
+  <text class="arrowtext" x="98.9" y="-178.4" font-size="14">OIKEE_HELPPO</text>
+</g>
+<g>
+  <g transform="rotate(-52)">
+    <line class="arrowline" x1="0" y1="0" x2="180" y2="0" stroke="#000000" stroke-width="3" marker-end="url(#arrowheadBlack)" />
+  </g>
+  <text class="arrowtext" x="119.4" y="-152.9" font-size="14">OIKEE_ERI</text>
+</g>
+<g>
+  <g transform="rotate(-44)">
+    <line class="arrowline" x1="0" y1="0" x2="175" y2="0" stroke="#ff8800" stroke-width="2" marker-end="url(#arrowheadOrange)" />
+  </g>
+  <text class="arrowtext" x="136.0" y="-131.3" font-size="14">OIKEE_ERI</text>
+</g>
+<g>
+  <g transform="rotate(-36)">
+    <line class="arrowline" x1="0" y1="0" x2="170" y2="0" stroke="#000000" stroke-width="3" marker-end="url(#arrowheadBlack)" />
+  </g>
+  <text class="arrowtext" x="148.9" y="-108.2" font-size="14">OIKEE_NOPEE</text>
+</g>
+<g>
+  <g transform="rotate(-27)">
+    <line class="arrowline" x1="0" y1="0" x2="165" y2="0" stroke="#ff8800" stroke-width="2" marker-end="url(#arrowheadOrange)" />
+  </g>
+  <text class="arrowtext" x="159.5" y="-81.3" font-size="14">OIKEE_NOPEE</text>
+</g>
+<g>
+  <g transform="rotate(-18)">
+    <line class="arrowline" x1="0" y1="0" x2="165" y2="0" stroke="#000000" stroke-width="3" marker-end="url(#arrowheadBlack)" />
+  </g>
+  <text class="arrowtext" x="170.2" y="-55.3" font-size="14">OIKEE_K</text>
+</g>
+<g>
+  <g transform="rotate(-10)">
+    <line class="arrowline" x1="0" y1="0" x2="155" y2="0" stroke="#ff8800" stroke-width="2" marker-end="url(#arrowheadOrange)" />
+  </g>
+  <text class="arrowtext" x="166.4" y="-29.3" font-size="14">OIKEE_K</text>
+</g>
+<g>
+  <g transform="rotate(0)">
+    <line class="arrowline" x1="0" y1="0" x2="155" y2="0" stroke="#000000" stroke-width="3" marker-end="url(#arrowheadBlack)" />
+  </g>
+  <text class="arrowtext" x="169.0" y="0.0" font-size="14">OIKEE_90</text>
+</g>
+<g>
+  <g transform="rotate(10)">
+    <line class="arrowline" x1="0" y1="0" x2="160" y2="0" stroke="#ff8800" stroke-width="2" marker-end="url(#arrowheadOrange)" />
+  </g>
+  <text class="arrowtext" x="171.4" y="30.2" font-size="14">OIKEE_90</text>
+</g>
+<g>
+  <g transform="rotate(22)">
+    <line class="arrowline" x1="0" y1="0" x2="170" y2="0" stroke="#000000" stroke-width="3" marker-end="url(#arrowheadBlack)" />
+  </g>
+  <text class="arrowtext" x="170.6" y="68.9" font-size="14">OIKEE_HIDAS</text>
+</g>
+<g>
+  <g transform="rotate(38)">
+    <line class="arrowline" x1="0" y1="0" x2="180" y2="0" stroke="#ff8800" stroke-width="2" marker-end="url(#arrowheadOrange)" />
+  </g>
+  <text class="arrowtext" x="152.9" y="119.4" font-size="14">OIKEE_HIDAS</text>
+</g>
+<g>
+  <g transform="rotate(55)">
+    <line class="arrowline" x1="0" y1="0" x2="190" y2="0" stroke="#000000" stroke-width="3" marker-end="url(#arrowheadBlack)" />
+  </g>
+  <text class="arrowtext" x="117.0" y="167.1" font-size="14">OIKEE_SERPO</text>
+</g>
+<g>
+  <g transform="rotate(75)">
+    <line class="arrowline" x1="0" y1="0" x2="200" y2="0" stroke="#ff8800" stroke-width="2" marker-end="url(#arrowheadOrange)" />
+  </g>
+  <text class="arrowtext" x="55.4" y="206.7" font-size="14">OIKEE_TAKA</text>
+</g></g></svg>
+<hr>
+<h1>NOTE8(SIMPLE_SUUNTA-HYBRIDI)</h1>
+<svg width="700" height="760" viewBox="-0 -175 440 300" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g><rect x="-1000" y="-1000" width="3000" height="3000" fill="#f0f0f0" /><defs>  <marker id="arrowheadBlack" markerWidth="7" markerHeight="7" refX="4" refY="2.5" orient="auto">    <polygon points="0 0, 5 2.5, 0 5" fill="#000000" />  </marker>  <marker id="arrowheadOrange" markerWidth="7" markerHeight="7" refX="4" refY="2.5" orient="auto">    <polygon points="0 0, 5 2.5, 0 5" fill="#ff8800" />  </marker></defs><g>
+  <g transform="rotate(-85)">
+    <line class="arrowline" x1="0" y1="0" x2="230" y2="0" stroke="#000000" stroke-width="3" marker-end="url(#arrowheadBlack)" />
+  </g>
+  <text class="arrowtext" x="21.3" y="-243.1" font-size="14">OIKEE_TAYS</text>
+</g>
+<g>
+  <g transform="rotate(-77)">
+    <line class="arrowline" x1="0" y1="0" x2="215" y2="0" stroke="#ff8800" stroke-width="2" marker-end="url(#arrowheadOrange)" />
+  </g>
+  <text class="arrowtext" x="51.5" y="-223.1" font-size="14">OIKEE_TAYS</text>
+</g>
+<g>
+  <g transform="rotate(-70)">
+    <line class="arrowline" x1="0" y1="0" x2="200" y2="0" stroke="#000000" stroke-width="3" marker-end="url(#arrowheadBlack)" />
+  </g>
+  <text class="arrowtext" x="73.2" y="-201.1" font-size="14">OIKEE_6</text>
+</g>
+<g>
+  <g transform="rotate(-61)">
+    <line class="arrowline" x1="0" y1="0" x2="190" y2="0" stroke="#ff8800" stroke-width="2" marker-end="url(#arrowheadOrange)" />
+  </g>
+  <text class="arrowtext" x="98.9" y="-178.4" font-size="14">OIKEE_6</text>
+</g>
+<g>
+  <g transform="rotate(-52)">
+    <line class="arrowline" x1="0" y1="0" x2="180" y2="0" stroke="#000000" stroke-width="3" marker-end="url(#arrowheadBlack)" />
+  </g>
+  <text class="arrowtext" x="119.4" y="-152.9" font-size="14">OIKEE_5</text>
+</g>
+<g>
+  <g transform="rotate(-44)">
+    <line class="arrowline" x1="0" y1="0" x2="175" y2="0" stroke="#ff8800" stroke-width="2" marker-end="url(#arrowheadOrange)" />
+  </g>
+  <text class="arrowtext" x="136.0" y="-131.3" font-size="14">OIKEE_5</text>
+</g>
+<g>
+  <g transform="rotate(-36)">
+    <line class="arrowline" x1="0" y1="0" x2="170" y2="0" stroke="#000000" stroke-width="3" marker-end="url(#arrowheadBlack)" />
+  </g>
+  <text class="arrowtext" x="148.9" y="-108.2" font-size="14">OIKEE_4</text>
+</g>
+<g>
+  <g transform="rotate(-27)">
+    <line class="arrowline" x1="0" y1="0" x2="165" y2="0" stroke="#ff8800" stroke-width="2" marker-end="url(#arrowheadOrange)" />
+  </g>
+  <text class="arrowtext" x="159.5" y="-81.3" font-size="14">OIKEE_4</text>
+</g>
+<g>
+  <g transform="rotate(-18)">
+    <line class="arrowline" x1="0" y1="0" x2="165" y2="0" stroke="#000000" stroke-width="3" marker-end="url(#arrowheadBlack)" />
+  </g>
+  <text class="arrowtext" x="170.2" y="-55.3" font-size="14">OIKEE_3</text>
+</g>
+<g>
+  <g transform="rotate(-10)">
+    <line class="arrowline" x1="0" y1="0" x2="155" y2="0" stroke="#ff8800" stroke-width="2" marker-end="url(#arrowheadOrange)" />
+  </g>
+  <text class="arrowtext" x="166.4" y="-29.3" font-size="14">OIKEE_3</text>
+</g>
+<g>
+  <g transform="rotate(0)">
+    <line class="arrowline" x1="0" y1="0" x2="155" y2="0" stroke="#000000" stroke-width="3" marker-end="url(#arrowheadBlack)" />
+  </g>
+  <text class="arrowtext" x="169.0" y="0.0" font-size="14">OIKEE_90</text>
+</g>
+<g>
+  <g transform="rotate(10)">
+    <line class="arrowline" x1="0" y1="0" x2="160" y2="0" stroke="#ff8800" stroke-width="2" marker-end="url(#arrowheadOrange)" />
+  </g>
+  <text class="arrowtext" x="171.4" y="30.2" font-size="14">OIKEE_90</text>
+</g>
+<g>
+  <g transform="rotate(22)">
+    <line class="arrowline" x1="0" y1="0" x2="170" y2="0" stroke="#000000" stroke-width="3" marker-end="url(#arrowheadBlack)" />
+  </g>
+  <text class="arrowtext" x="170.6" y="68.9" font-size="14">OIKEE_2</text>
+</g>
+<g>
+  <g transform="rotate(38)">
+    <line class="arrowline" x1="0" y1="0" x2="180" y2="0" stroke="#ff8800" stroke-width="2" marker-end="url(#arrowheadOrange)" />
+  </g>
+  <text class="arrowtext" x="152.9" y="119.4" font-size="14">OIKEE_2</text>
+</g>
+<g>
+  <g transform="rotate(55)">
+    <line class="arrowline" x1="0" y1="0" x2="190" y2="0" stroke="#000000" stroke-width="3" marker-end="url(#arrowheadBlack)" />
+  </g>
+  <text class="arrowtext" x="117.0" y="167.1" font-size="14">OIKEE_SERPO</text>
+</g>
+<g>
+  <g transform="rotate(75)">
+    <line class="arrowline" x1="0" y1="0" x2="200" y2="0" stroke="#ff8800" stroke-width="2" marker-end="url(#arrowheadOrange)" />
+  </g>
+  <text class="arrowtext" x="55.4" y="206.7" font-size="14">OIKEE_TAKA</text>
+</g></g></svg>
+<hr>
+<h1>NOTE9 (SUUNTA-NUMERO2)</h1>
+<svg width="700" height="760" viewBox="-0 -175 440 300" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g><rect x="-1000" y="-1000" width="3000" height="3000" fill="#f0f0f0" /><defs>  <marker id="arrowheadBlack" markerWidth="7" markerHeight="7" refX="4" refY="2.5" orient="auto">    <polygon points="0 0, 5 2.5, 0 5" fill="#000000" />  </marker>  <marker id="arrowheadOrange" markerWidth="7" markerHeight="7" refX="4" refY="2.5" orient="auto">    <polygon points="0 0, 5 2.5, 0 5" fill="#ff8800" />  </marker></defs><g>
+  <g transform="rotate(-85)">
+    <line class="arrowline" x1="0" y1="0" x2="230" y2="0" stroke="#000000" stroke-width="3" marker-end="url(#arrowheadBlack)" />
+  </g>
+  <text class="arrowtext" x="21.3" y="-243.1" font-size="14">OIKEE_7</text>
+</g>
+<g>
+  <g transform="rotate(-77)">
+    <line class="arrowline" x1="0" y1="0" x2="215" y2="0" stroke="#ff8800" stroke-width="2" marker-end="url(#arrowheadOrange)" />
+  </g>
+  <text class="arrowtext" x="51.5" y="-223.1" font-size="14">OIKEE_6_PLUS</text>
+</g>
+<g>
+  <g transform="rotate(-70)">
+    <line class="arrowline" x1="0" y1="0" x2="200" y2="0" stroke="#000000" stroke-width="3" marker-end="url(#arrowheadBlack)" />
+  </g>
+  <text class="arrowtext" x="73.2" y="-201.1" font-size="14">OIKEE_6</text>
+</g>
+<g>
+  <g transform="rotate(-61)">
+    <line class="arrowline" x1="0" y1="0" x2="190" y2="0" stroke="#ff8800" stroke-width="2" marker-end="url(#arrowheadOrange)" />
+  </g>
+  <text class="arrowtext" x="98.9" y="-178.4" font-size="14">OIKEE_5_PLUS</text>
+</g>
+<g>
+  <g transform="rotate(-52)">
+    <line class="arrowline" x1="0" y1="0" x2="180" y2="0" stroke="#000000" stroke-width="3" marker-end="url(#arrowheadBlack)" />
+  </g>
+  <text class="arrowtext" x="119.4" y="-152.9" font-size="14">OIKEE_5</text>
+</g>
+<g>
+  <g transform="rotate(-44)">
+    <line class="arrowline" x1="0" y1="0" x2="175" y2="0" stroke="#ff8800" stroke-width="2" marker-end="url(#arrowheadOrange)" />
+  </g>
+  <text class="arrowtext" x="136.0" y="-131.3" font-size="14">OIKEE_4_PLUS</text>
+</g>
+<g>
+  <g transform="rotate(-36)">
+    <line class="arrowline" x1="0" y1="0" x2="170" y2="0" stroke="#000000" stroke-width="3" marker-end="url(#arrowheadBlack)" />
+  </g>
+  <text class="arrowtext" x="148.9" y="-108.2" font-size="14">OIKEE_4</text>
+</g>
+<g>
+  <g transform="rotate(-27)">
+    <line class="arrowline" x1="0" y1="0" x2="165" y2="0" stroke="#ff8800" stroke-width="2" marker-end="url(#arrowheadOrange)" />
+  </g>
+  <text class="arrowtext" x="159.5" y="-81.3" font-size="14">OIKEE_3_PLUS</text>
+</g>
+<g>
+  <g transform="rotate(-18)">
+    <line class="arrowline" x1="0" y1="0" x2="165" y2="0" stroke="#000000" stroke-width="3" marker-end="url(#arrowheadBlack)" />
+  </g>
+  <text class="arrowtext" x="170.2" y="-55.3" font-size="14">OIKEE_3</text>
+</g>
+<g>
+  <g transform="rotate(-10)">
+    <line class="arrowline" x1="0" y1="0" x2="155" y2="0" stroke="#ff8800" stroke-width="2" marker-end="url(#arrowheadOrange)" />
+  </g>
+  <text class="arrowtext" x="166.4" y="-29.3" font-size="14">OIKEE_90_PLUS</text>
+</g>
+<g>
+  <g transform="rotate(0)">
+    <line class="arrowline" x1="0" y1="0" x2="155" y2="0" stroke="#000000" stroke-width="3" marker-end="url(#arrowheadBlack)" />
+  </g>
+  <text class="arrowtext" x="169.0" y="0.0" font-size="14">OIKEE_90</text>
+</g>
+<g>
+  <g transform="rotate(10)">
+    <line class="arrowline" x1="0" y1="0" x2="160" y2="0" stroke="#ff8800" stroke-width="2" marker-end="url(#arrowheadOrange)" />
+  </g>
+  <text class="arrowtext" x="171.4" y="30.2" font-size="14">OIKEE_2_PLUS</text>
+</g>
+<g>
+  <g transform="rotate(22)">
+    <line class="arrowline" x1="0" y1="0" x2="170" y2="0" stroke="#000000" stroke-width="3" marker-end="url(#arrowheadBlack)" />
+  </g>
+  <text class="arrowtext" x="170.6" y="68.9" font-size="14">OIKEE_2</text>
+</g>
+<g>
+  <g transform="rotate(38)">
+    <line class="arrowline" x1="0" y1="0" x2="180" y2="0" stroke="#ff8800" stroke-width="2" marker-end="url(#arrowheadOrange)" />
+  </g>
+  <text class="arrowtext" x="152.9" y="119.4" font-size="14">OIKEE_1_PLUS</text>
+</g>
+<g>
+  <g transform="rotate(55)">
+    <line class="arrowline" x1="0" y1="0" x2="190" y2="0" stroke="#000000" stroke-width="3" marker-end="url(#arrowheadBlack)" />
+  </g>
+  <text class="arrowtext" x="117.0" y="167.1" font-size="14">OIKEE_1</text>
+</g>
+<g>
+  <g transform="rotate(75)">
+    <line class="arrowline" x1="0" y1="0" x2="200" y2="0" stroke="#ff8800" stroke-width="2" marker-end="url(#arrowheadOrange)" />
+  </g>
+  <text class="arrowtext" x="55.4" y="206.7" font-size="14">OIKEE_1_MIINUS</text>
+</g></g></svg>
+<hr>
+<h1>NOTE10 (SUUNTA-NUMERO3)</h1>
+<svg width="700" height="760" viewBox="-0 -175 440 300" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g><rect x="-1000" y="-1000" width="3000" height="3000" fill="#f0f0f0" /><defs>  <marker id="arrowheadBlack" markerWidth="7" markerHeight="7" refX="4" refY="2.5" orient="auto">    <polygon points="0 0, 5 2.5, 0 5" fill="#000000" />  </marker>  <marker id="arrowheadOrange" markerWidth="7" markerHeight="7" refX="4" refY="2.5" orient="auto">    <polygon points="0 0, 5 2.5, 0 5" fill="#ff8800" />  </marker></defs><g>
+  <g transform="rotate(-85)">
+    <line class="arrowline" x1="0" y1="0" x2="230" y2="0" stroke="#000000" stroke-width="3" marker-end="url(#arrowheadBlack)" />
+  </g>
+  <text class="arrowtext" x="21.3" y="-243.1" font-size="14">OIKEE_10</text>
+</g>
+<g>
+  <g transform="rotate(-77)">
+    <line class="arrowline" x1="0" y1="0" x2="215" y2="0" stroke="#ff8800" stroke-width="2" marker-end="url(#arrowheadOrange)" />
+  </g>
+  <text class="arrowtext" x="51.5" y="-223.1" font-size="14">OIKEE_9</text>
+</g>
+<g>
+  <g transform="rotate(-70)">
+    <line class="arrowline" x1="0" y1="0" x2="200" y2="0" stroke="#000000" stroke-width="3" marker-end="url(#arrowheadBlack)" />
+  </g>
+  <text class="arrowtext" x="73.2" y="-201.1" font-size="14">OIKEE_8</text>
+</g>
+<g>
+  <g transform="rotate(-61)">
+    <line class="arrowline" x1="0" y1="0" x2="190" y2="0" stroke="#ff8800" stroke-width="2" marker-end="url(#arrowheadOrange)" />
+  </g>
+  <text class="arrowtext" x="98.9" y="-178.4" font-size="14">OIKEE_7</text>
+</g>
+<g>
+  <g transform="rotate(-52)">
+    <line class="arrowline" x1="0" y1="0" x2="180" y2="0" stroke="#000000" stroke-width="3" marker-end="url(#arrowheadBlack)" />
+  </g>
+  <text class="arrowtext" x="119.4" y="-152.9" font-size="14">OIKEE_6</text>
+</g>
+<g>
+  <g transform="rotate(-44)">
+    <line class="arrowline" x1="0" y1="0" x2="175" y2="0" stroke="#ff8800" stroke-width="2" marker-end="url(#arrowheadOrange)" />
+  </g>
+  <text class="arrowtext" x="136.0" y="-131.3" font-size="14">OIKEE_5</text>
+</g>
+<g>
+  <g transform="rotate(-36)">
+    <line class="arrowline" x1="0" y1="0" x2="170" y2="0" stroke="#000000" stroke-width="3" marker-end="url(#arrowheadBlack)" />
+  </g>
+  <text class="arrowtext" x="148.9" y="-108.2" font-size="14">OIKEE_4</text>
+</g>
+<g>
+  <g transform="rotate(-27)">
+    <line class="arrowline" x1="0" y1="0" x2="165" y2="0" stroke="#ff8800" stroke-width="2" marker-end="url(#arrowheadOrange)" />
+  </g>
+  <text class="arrowtext" x="159.5" y="-81.3" font-size="14">OIKEE_3_PLUS</text>
+</g>
+<g>
+  <g transform="rotate(-18)">
+    <line class="arrowline" x1="0" y1="0" x2="165" y2="0" stroke="#000000" stroke-width="3" marker-end="url(#arrowheadBlack)" />
+  </g>
+  <text class="arrowtext" x="170.2" y="-55.3" font-size="14">OIKEE_3</text>
+</g>
+<g>
+  <g transform="rotate(-10)">
+    <line class="arrowline" x1="0" y1="0" x2="155" y2="0" stroke="#ff8800" stroke-width="2" marker-end="url(#arrowheadOrange)" />
+  </g>
+  <text class="arrowtext" x="166.4" y="-29.3" font-size="14">OIKEE_90_PLUS</text>
+</g>
+<g>
+  <g transform="rotate(0)">
+    <line class="arrowline" x1="0" y1="0" x2="155" y2="0" stroke="#000000" stroke-width="3" marker-end="url(#arrowheadBlack)" />
+  </g>
+  <text class="arrowtext" x="169.0" y="0.0" font-size="14">OIKEE_90</text>
+</g>
+<g>
+  <g transform="rotate(10)">
+    <line class="arrowline" x1="0" y1="0" x2="160" y2="0" stroke="#ff8800" stroke-width="2" marker-end="url(#arrowheadOrange)" />
+  </g>
+  <text class="arrowtext" x="171.4" y="30.2" font-size="14">OIKEE_2_PLUS</text>
+</g>
+<g>
+  <g transform="rotate(22)">
+    <line class="arrowline" x1="0" y1="0" x2="170" y2="0" stroke="#000000" stroke-width="3" marker-end="url(#arrowheadBlack)" />
+  </g>
+  <text class="arrowtext" x="170.6" y="68.9" font-size="14">OIKEE_2</text>
+</g>
+<g>
+  <g transform="rotate(38)">
+    <line class="arrowline" x1="0" y1="0" x2="180" y2="0" stroke="#ff8800" stroke-width="2" marker-end="url(#arrowheadOrange)" />
+  </g>
+  <text class="arrowtext" x="152.9" y="119.4" font-size="14">OIKEE_1_PLUS</text>
+</g>
+<g>
+  <g transform="rotate(55)">
+    <line class="arrowline" x1="0" y1="0" x2="190" y2="0" stroke="#000000" stroke-width="3" marker-end="url(#arrowheadBlack)" />
+  </g>
+  <text class="arrowtext" x="117.0" y="167.1" font-size="14">OIKEE_1</text>
+</g>
+<g>
+  <g transform="rotate(75)">
+    <line class="arrowline" x1="0" y1="0" x2="200" y2="0" stroke="#ff8800" stroke-width="2" marker-end="url(#arrowheadOrange)" />
+  </g>
+  <text class="arrowtext" x="55.4" y="206.7" font-size="14">OIKEE_1_MIINUS</text>
+</g></g></svg>
+<hr>
+</div></body></html>
