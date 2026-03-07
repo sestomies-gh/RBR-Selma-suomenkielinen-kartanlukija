@@ -31,6 +31,7 @@ Pakettien purkaminen varoittaa, että se ylikirjoittaa samannimisiä kansioita j
 
 Huomaa että Selman äänet toimivat vain, jos pelin Pacenote-kielenä on oletus: ENGLISH
 
+*[ZIP-paketit](https://github.com/sestomies-gh/RBR-Selma-suomenkielinen-kartanlukija/releases)*
 
 # Korjaaminen tai Nuottiskaalan vaihto
 
