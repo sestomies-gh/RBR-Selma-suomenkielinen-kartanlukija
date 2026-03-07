@@ -1,4 +1,4 @@
-# RBR-Selma-finnish-tts-codriver ![kuva](https://sestomies-gh.github.io/RBR-Selma-suomenkielinen-kartanlukija/web/asset/kuva.png)]
+# RBR-Selma-finnish-tts-codriver ![kuva](https://sestomies-gh.github.io/RBR-Selma-suomenkielinen-kartanlukija/web/asset/gb.png)]
 
 “Selma” – Finnish female co-driver pack for **RallySimFans Richard Burns Rally**, generated using **Microsoft Azure Neural TTS**.
 
