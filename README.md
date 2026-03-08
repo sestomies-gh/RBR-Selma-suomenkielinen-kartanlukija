@@ -42,6 +42,8 @@ Huomaa että Selman äänet toimivat vain, jos pelin Pacenote-kielenä on oletus
 
 Jos jokin menee pieleen tai haluat palauttaa oletuskartturin, pääset aloitustilanteeseen suorittamalla käytössäsi olevan tai uusimman 'Rallysimfans_Installer.exe':n (joka löytyy https://rallysimfans.hu/rbr/ -www-sivuilta). Voit jättää kaikki muuta option valitsematta, mutta kun löydät installerista kohdan 'Pacenote plugin', valitse se.
 
+Toiseksi pitää palauttaa pelin perusääniä Audio-kansioon. Sen voit tehdä purkamalla ZIP-tiedostoista löytyvällä 'Audio_kansion_palautus.zip' -sisällön pelikansioon, samoin kuten Selman käyttöönotossa teit.
+
 -> Tuloksena tulee alkuperäinen kartturi. Huomaa että Selman-äänitiedostot jäävät vielä tietokoneellesi. Voit halutessasi poistaa ne tuhoamalla pelin hakemistopolun '\Plugins\Pacenote\sounds\  alta  'SELMA' -nimisen kansion...siis tuohoa vain  SELMA -kansio ei muita !!
 
 ---
