@@ -44,7 +44,7 @@ Jos jokin menee pieleen tai haluat palauttaa oletuskartturin, pääset aloitusti
 
 Toiseksi pitää palauttaa pelin perusääniä Audio-kansioon. Sen voit tehdä purkamalla ZIP-tiedostoista löytyvällä 'Audio_kansion_palautus.zip' -sisällön pelikansioon, samoin kuten Selman käyttöönotossa teit.
 
--> Tuloksena tulee alkuperäinen kartturi. Huomaa että Selman-äänitiedostot jäävät vielä tietokoneellesi. Voit halutessasi poistaa ne tuhoamalla pelin hakemistopolun '\Plugins\Pacenote\sounds\  alta  'SELMA' -nimisen kansion...siis tuohoa vain  SELMA -kansio ei muita !!
+-> Tuloksena tulee alkuperäinen kartturi. Huomaa että Selman-äänitiedostot jäävät vielä tietokoneellesi. Voit halutessasi poistaa ne tuhoamalla pelin hakemistopolun '\Plugins\Pacenote\sounds\  alta  'SELMA' -nimisen kansion...siis tuhoa vain  *SELMA* -kansio ei muita !!
 
 ---
 ## 🎧 Tietoa projektista suomeksi ![fi](https://sestomies-gh.github.io/RBR-Selma-suomenkielinen-kartanlukija/web/asset/fi.png)
