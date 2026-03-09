@@ -14,6 +14,8 @@
 
 TÄMÄ POISTAA SINUN AIEMMIN KÄYTÖSSÄ OLEVAN KARTTURIN !
 
+*[🎥 Video-ohje asennukseen](https://www.youtube.com/watch?v=_oOwJDfbNAw)*
+
 Varmista että sinulla on asennettuna **RallySimFans Richard Burns Rally**-peli. Tämä on tärkeää ainakin sen suhteen, että pystyt palauttamaan oletuskartanlukijan, jos jokin menee pieleen!
 
 Ääni- ja tarvittavat Nuotti-tiedostot on pakattu erikseen. Tämä siksi, että äänipaketti tarvitaan vain yhden kerran ja itse NOTE-paketeilla valitaan nuottiskaala ja se mitä ääniä käytetään. Nuottiskaalan muuttamiseen riittää NOTEx-paketin vaihto.
@@ -39,6 +41,8 @@ Huomaa että Selman äänet toimivat vain, jos pelin Pacenote-kielenä on oletus
 
 
 # Poisto
+
+*[🎥 Video-ohje poistoon](https://www.youtube.com/watch?v=_oOwJDfbNAw&t=244s)*
 
 Jos jokin menee pieleen tai haluat palauttaa oletuskartturin, pääset aloitustilanteeseen suorittamalla käytössäsi olevan tai uusimman 'Rallysimfans_Installer.exe':n (joka löytyy https://rallysimfans.hu/rbr/ -www-sivuilta). Voit jättää kaikki muuta option valitsematta, mutta kun löydät installerista kohdan 'Pacenote plugin', valitse se.
 
